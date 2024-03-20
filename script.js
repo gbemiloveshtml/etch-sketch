@@ -8,7 +8,10 @@ const createPage = () => {
 //create button to ask user how many squares 
     const userBtn = document.createElement('button')
     userBtn.classList.add('btn')
+    userBtn.textContent='Click Me To Paint'
     document.body.appendChild(userBtn)
+
+    
     
 
     //adds event listener to button and makes maximum square 100
@@ -19,14 +22,17 @@ const createPage = () => {
         userSquare = prompt('How many squares do you want?')
     } 
 
+    //gets rid of div border showing before button is clicked
+    mainDiv.style.border='solid','black'
+
    
-    //creates number of sqaures that user asks for(basiclly the page)currently figuring out how to make amount of square asked for create a new set of grid
+    //creates number of sqaures that user asks for
     let numberOfSquares = userSquare
     for(let i =0; i<numberOfSquares; i++){
     const rowDiv = document.createElement('div')
     console.log('added')
     rowDiv.classList.add('row');
-    
+    //creates grid
     for(let j =0;j<numberOfSquares;j++){
         const columnDiv = document.createElement('div')
         columnDiv.classList.add('column')
@@ -36,13 +42,25 @@ const createPage = () => {
          
           
         })
+        //removes previous grid once button is clicked
+        userBtn.addEventListener('click', event =>{
+            columnDiv.remove()
+            rowDiv.remove()
+           
+    })
     }
+    
 
     mainDiv.appendChild(rowDiv)
 
 }
+   
+
 }) 
+    
 }
 
 
 createPage()
+
+//MVP finished on 3/19/24
